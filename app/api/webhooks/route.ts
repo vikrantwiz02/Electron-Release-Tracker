@@ -25,6 +25,12 @@ export async function POST(request: Request) {
     // Connect to the database
     const { webhooks } = await connectToDatabase()
 
+    // Add null check for webhooks
+    if (!webhooks) {
+      console.error("Webhooks collection is not initialized")
+      return NextResponse.json({ error: "Database connection error" }, { status: 500 })
+    }
+
     // Create a new webhook
     const now = new Date()
     const newWebhook = {
@@ -32,7 +38,7 @@ export async function POST(request: Request) {
       name: body.name,
       url: body.url,
       events: body.events,
-      isActive: body.isActive !== false, // Default to true if not provided
+      isActive: body.isActive !== false,
       createdAt: now,
       updatedAt: now,
     }

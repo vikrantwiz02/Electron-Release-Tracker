@@ -8,6 +8,12 @@ export async function GET(request: Request, { params }: { params: { id: string }
     // Connect to the database
     const { webhooks } = await connectToDatabase()
 
+    // Add null check for webhooks
+    if (!webhooks) {
+      console.error("Webhooks collection is not initialized")
+      return NextResponse.json({ error: "Database connection error" }, { status: 500 })
+    }
+
     // Find the webhook
     const webhook = await webhooks.findOne({ id })
 
@@ -34,6 +40,12 @@ export async function PUT(request: Request, { params }: { params: { id: string }
 
     // Connect to the database
     const { webhooks } = await connectToDatabase()
+
+    // Add null check for webhooks
+    if (!webhooks) {
+      console.error("Webhooks collection is not initialized")
+      return NextResponse.json({ error: "Database connection error" }, { status: 500 })
+    }
 
     // Update the webhook
     const now = new Date()
@@ -68,6 +80,12 @@ export async function DELETE(request: Request, { params }: { params: { id: strin
 
     // Connect to the database
     const { webhooks } = await connectToDatabase()
+
+    // Add null check for webhooks
+    if (!webhooks) {
+      console.error("Webhooks collection is not initialized")
+      return NextResponse.json({ error: "Database connection error" }, { status: 500 })
+    }
 
     // Delete the webhook
     const result = await webhooks.deleteOne({ id })

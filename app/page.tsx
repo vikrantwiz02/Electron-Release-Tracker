@@ -22,7 +22,7 @@ export default async function DashboardPage() {
         <div className="container flex h-16 items-center justify-between py-4">
           <div className="flex items-center gap-2">
             <CalendarIcon className="h-6 w-6" />
-            <h1 className="text-xl font-bold">Electron Release Tracker</h1>
+            <h1 className="text-xl font-bold">Electron & Chromium Release Tracker</h1>
           </div>
           <div className="flex items-center gap-2">
             <Button variant="outline" size="sm" asChild>

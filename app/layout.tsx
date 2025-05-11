@@ -9,7 +9,7 @@ import "./globals.css"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Electron Release Tracker",
+  title: "Electron and Chromium Release Tracker",
   description: "Track Electron releases alongside Chromium's schedule",
 }
 
